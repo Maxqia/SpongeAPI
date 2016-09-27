@@ -24,7 +24,7 @@
  */
 package org.spongepowered.api.service.permission;
 
-import org.spongepowered.api.service.context.Context;
+import org.spongepowered.api.service.context.ServiceContext;
 import org.spongepowered.api.service.context.Contextual;
 import org.spongepowered.api.util.Tristate;
 import org.spongepowered.api.command.CommandSource;
@@ -108,7 +108,7 @@ public interface Subject extends Contextual {
      * @param permission The permission string
      * @return True if permission is granted
      */
-    boolean hasPermission(Set<Context> contexts, String permission);
+    boolean hasPermission(Set<ServiceContext> contexts, String permission);
 
     /**
      * Test whether the subject is permitted to perform an action given as the
@@ -129,7 +129,7 @@ public interface Subject extends Contextual {
      * @param permission The permission to check
      * @return The tristate true/false/unset value for permissions
      */
-    Tristate getPermissionValue(Set<Context> contexts, String permission);
+    Tristate getPermissionValue(Set<ServiceContext> contexts, String permission);
 
     /**
      * Check if this subject is a child of the given parent in the subject's
@@ -151,7 +151,7 @@ public interface Subject extends Contextual {
      * @param parent The parent to check for inheritance
      * @return Whether this is a child of the given parent
      */
-    boolean isChildOf(Set<Context> contexts, Subject parent);
+    boolean isChildOf(Set<ServiceContext> contexts, Subject parent);
 
     /**
      * Return all parents that this group has in its current context
@@ -172,7 +172,7 @@ public interface Subject extends Contextual {
      * @param contexts The set of contexts that represents the subject's current environment
      * @return An immutable list of parents
      */
-    List<Subject> getParents(Set<Context> contexts);
+    List<Subject> getParents(Set<ServiceContext> contexts);
 
     /**
      * Get the value of a given option in the given context.
@@ -181,7 +181,7 @@ public interface Subject extends Contextual {
      * @param key The key to get an option by. Case-insensitive.
      * @return The value of the option, if any is present
      */
-    Optional<String> getOption(Set<Context> contexts, String key);
+    Optional<String> getOption(Set<ServiceContext> contexts, String key);
 
     /**
      * Get the value of a given option in the subject's current context

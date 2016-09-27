@@ -24,7 +24,7 @@
  */
 package org.spongepowered.api.service.permission;
 
-import org.spongepowered.api.service.context.Context;
+import org.spongepowered.api.service.context.ServiceContext;
 
 import java.util.Map;
 import java.util.Set;
@@ -89,7 +89,7 @@ public interface SubjectCollection {
      * @return Any subject known to have this permission set, and the value this
      *         permission is set to
      */
-    Map<Subject, Boolean> getAllWithPermission(Set<Context> contexts, String permission);
+    Map<Subject, Boolean> getAllWithPermission(Set<ServiceContext> contexts, String permission);
 
     /**
      * Get the subject that provides defaults for subjects of this type. This subject is placed at the root of any inheritance tree involving subjects of this type.
