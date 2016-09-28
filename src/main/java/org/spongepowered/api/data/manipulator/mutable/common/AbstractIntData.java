@@ -43,8 +43,4 @@ public abstract class AbstractIntData<M extends DataManipulator<M, I>, I extends
         super(value, usedKey);
     }
 
-    @Override
-    public int compareTo(M o) {
-        return Integer.compare(o.get(this.usedKey).get(), this.getValue());
-    }
 }

@@ -22,28 +22,5 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.item.inventory.entity;
-
-import org.spongepowered.api.entity.living.Humanoid;
-import org.spongepowered.api.item.inventory.crafting.CraftingInventory;
-import org.spongepowered.api.item.inventory.type.CarriedInventory;
-
-/**
- * Represents the inventory of a Humanoid or Player. Implementors of this interface
- * guarantee that (at a minimum) the following subinventory types can be queried
- * for:
- *
- * <ul><li>
- *   {@link CraftingInventory}
- * </li></ul>
- */
-public interface HumanInventory extends CarriedInventory<Humanoid> {
-
-    /**
-     * Get the hotbar inventory.
-     *
-     * @return the hotbar
-     */
-    Hotbar getHotbar();
-
-}
+@org.spongepowered.api.util.annotation.NonnullByDefault
+package org.spongepowered.api.data.key;

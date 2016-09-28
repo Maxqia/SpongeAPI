@@ -22,13 +22,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.entity.living.monster;
+package org.spongepowered.api.util.file;
 
-import org.spongepowered.api.entity.living.Ranger;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.FileVisitor;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 
 /**
- * Represents a Witch.
+ * Represents a {@link FileVisitor} which will recursively delete a directory
+ * with all its contents.
+ *
+ * <p>Example usage:
+ * {@code Files.walkFileTree(dir, DeleteFileVisitor.INSTANCE);}</p>
  */
-public interface Witch extends Monster, Ranger {
+public class DeleteFileVisitor extends SimpleFileVisitor<Path> {
+
+    public static final DeleteFileVisitor INSTANCE = new DeleteFileVisitor();
+
+    protected DeleteFileVisitor() {
+    }
+
+    @Override
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+        Files.delete(file);
+        return FileVisitResult.CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+        Files.delete(dir);
+        return FileVisitResult.CONTINUE;
+    }
 
 }
